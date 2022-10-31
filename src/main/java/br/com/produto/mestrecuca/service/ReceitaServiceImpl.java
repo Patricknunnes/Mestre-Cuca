@@ -18,20 +18,20 @@ public class ReceitaServiceImpl implements ReceitaService{
     private final ReceitaRepository receitaRepository;
 
     @Override
-    public List<Receita> getAll() {
-        List<Receita> receitas = receitaRepository.findAll();
-        return receitas;
+    public List<Receita> getAll(String nome) {
+        if (nome==null||nome=="") {
+            List<Receita> receitas = receitaRepository.findAll();
+            return receitas;
+        } else {
+            List<Receita> receitas = receitaRepository.getByNomeContaining(nome);
+            return  receitas;
+        }
     }
 
     @Override
     public Receita getById(Integer id) {
         Receita receita = receitaRepository.findById(id).orElseThrow(RuntimeException::new);
         return receita;
-    }
-
-    @Override
-    public Receita getByNameContaining(String nome) {
-        return null;
     }
 
     @Override

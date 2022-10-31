@@ -16,18 +16,13 @@ public class ReceitaController {
     private final ReceitaService receitaService;
 
     @GetMapping
-    public List<Receita> getAll() {
-        return receitaService.getAll();
+    public List<Receita> getAll(@PathVariable (required = false) String nome) {
+        return receitaService.getAll(nome);
     }
 
     @GetMapping("/{id}")
     public Receita getById(@PathVariable Integer id) {
         return receitaService.getById(id);
-    }
-
-    @GetMapping("/{nome}")
-    public Receita getByNameContaining(@PathVariable String nome) {
-        return receitaService.getByNameContaining(nome);
     }
 
     @PostMapping

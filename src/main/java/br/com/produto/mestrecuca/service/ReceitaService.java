@@ -7,11 +7,9 @@ import java.util.List;
 
 public interface ReceitaService {
 
-    List<Receita> getAll();
+    List<Receita> getAll(String nome);
 
     Receita getById(Integer id);
-
-    Receita getByNameContaining(String nome);
 
     Receita save(ReceitaDto receitaDto);
 }
